@@ -43,7 +43,3 @@ set DESKTOP_AUDIO=Odyssey G6 (NVIDIA High Definition Audio)
 Import-Module AudioDeviceCmdlets
 Get-AudioDevice -List | Where-Object { $_.Type -eq 'Playback' } | Select-Object Index, Name
 ```
-Таймаут ожидания запуска Big Picture (по умолчанию 120 × 0.5с = 60 сек):
-```bat
-set BP_TIMEOUT=120
-```
