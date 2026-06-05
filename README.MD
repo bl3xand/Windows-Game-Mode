@@ -1,23 +1,20 @@
 # 🎮 GameMode Switcher
-
 Быстрое переключение ПК в игровой режим: Steam Big Picture + ТВ как основной экран.  
-При выходе из Big Picture — автоматический возврат на основной монитор.
+При выходе из Big Picture — автоматический возврат на основной монитор и аудиоустройство.
 
 ## Что делает
-
 1. Переключает вывод изображения на ТВ (`DisplaySwitch /external`)
-2. Запускает Steam в режиме Big Picture
-3. Запускает фоновый наблюдатель — как только Big Picture закрывается, возвращает экран обратно (`/internal`)
+2. Переключает аудио на ТВ
+3. Запускает Steam в режиме Big Picture
+4. Запускает фоновый наблюдатель — как только Big Picture закрывается, возвращает экран и звук обратно (`/internal`)
 
 ## Требования
-
 - Windows 10/11
 - Конфигурация: **1 монитор + 1 ТВ** (HDMI/DP)
+- Модуль `AudioDeviceCmdlets` — устанавливается автоматически при первом запуске
 
 ## Использование
-
 Запустить `GameMode.bat` от имени обычного пользователя.  
-
 **Для удобства:**
 1. Положи `GameMode.bat` и `gamemode.ico` в любое удобное место (например, `C:\Tools\`)
 2. Создай ярлык: ПКМ на `GameMode.bat` → *Создать ярлык*
@@ -28,18 +25,25 @@
    - Повесить на горячую клавишу через AutoHotkey
 
 ## Ограничения
-
-Пока реализована только поддержка монитора + ТВ
+Пока реализована только поддержка монитора + ТВ  
 Больше двух экранов - не поддерживается
 
 ## Кастомизация
-
 Путь к Steam меняется в строке:
 ```bat
 set STEAM="C:\Program Files (x86)\Steam\Steam.exe"
 ```
-
-Таймаут ожидания запуска Big Picture (по умолчанию 120 × 0.5с = 60 сек):
+Названия аудиоустройств (как отображаются в Windows):
+```bat
+set TV_AUDIO=LG TV SSCR2 (NVIDIA High Definition Audio)
+set DESKTOP_AUDIO=Odyssey G60SD (NVIDIA High Definition Audio)
+```
+Узнать точные названия своих устройств можно через PowerShell:
 ```powershell
-$timeout = 120
+Import-Module AudioDeviceCmdlets
+Get-AudioDevice -List | Where-Object { $_.Type -eq 'Playback' } | Select-Object Index, Name
+```
+Таймаут ожидания запуска Big Picture (по умолчанию 120 × 0.5с = 60 сек):
+```bat
+set BP_TIMEOUT=120
 ```
