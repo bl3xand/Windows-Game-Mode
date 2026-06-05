@@ -5,8 +5,8 @@ chcp 65001 >nul
 :: SETTINGS
 :: ========================================
 set STEAM="C:\Program Files (x86)\Steam\Steam.exe"
-set TV_AUDIO="YOUR TV AUDIO DEVICE NAME"
-set DESKTOP_AUDIO=YOUR DESKTOP AUDIO DEVICE NAME"
+set TV_AUDIO=YOUR TV AUDIO DEVICE NAME
+set DESKTOP_AUDIO=YOUR DESKTOP AUDIO DEVICE NAME
 :: Timeout waiting for audio device after display switch (seconds)
 set AUDIO_TIMEOUT=10
 :: Big Picture launch timeout (steps of 0.5s, 120 = 60 sec)
