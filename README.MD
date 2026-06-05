@@ -35,8 +35,8 @@ set STEAM="C:\Program Files (x86)\Steam\Steam.exe"
 ```
 Названия аудиоустройств (как отображаются в Windows):
 ```bat
-set TV_AUDIO=LG TV SSCR2 (NVIDIA High Definition Audio)
-set DESKTOP_AUDIO=Odyssey G60SD (NVIDIA High Definition Audio)
+set TV_AUDIO=LG TV (NVIDIA High Definition Audio)
+set DESKTOP_AUDIO=Odyssey G6 (NVIDIA High Definition Audio)
 ```
 Узнать точные названия своих устройств можно через PowerShell:
 ```powershell
